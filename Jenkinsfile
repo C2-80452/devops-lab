@@ -22,11 +22,6 @@ pipeline {
                 sh '/usr/bin/docker image push shivendra013/imyimagess'
             }
         }
-        stage ('docker remove service') {
-            steps {
-                sh '/usr/bin/docker service rm iservices'
-            }
-        }
         stage ('docker create service') {
             steps {
                 sh '/usr/bin/docker service create --name iservices -p 9876:80 --replicas 5 shivendra013/imyimagess'
